@@ -9,7 +9,7 @@ unzip("exdata-data-household_power_consumption.zip")
 data <- read.table("household_power_consumption.txt", header=TRUE, sep=";")
 data$Date <- as.Date(data$Date, "%d/%m/%Y")
 dated <- subset(data, Date >= as.Date("2007-02-01", "%Y-%m-%d") & Date <= as.Date("2007-02-02", "%Y-%m-%d"))
-temp <- paste("2007-02-01", as.character(dated[dated$Date == as.Date("2007-02-01"), ]$Time))
+temp <- paste(dated$Date, as.character(dated$Time))
 times <- strptime(temp, format = "%Y-%m-%d %H:%M:%S")
 dated$Time <- times
 dated$Global_active_power <- as.numeric(levels(dated$Global_active_power)[dated$Global_active_power])
